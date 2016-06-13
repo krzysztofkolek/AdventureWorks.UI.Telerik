@@ -1,49 +1,75 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <title>@ViewBag.Title - My Telerik MVC Application</title>
-        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    	<link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.materialblack.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.dataviz.materialblack.min.css")" rel="stylesheet" type="text/css" />
-	<script src="@Url.Content("~/Scripts/kendo/2016.1.18/jquery.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2016.1.18/jszip.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2016.1.18/kendo.all.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2016.1.18/kendo.aspnetmvc.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
-</head>
-    <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
+<head>
+    <title>@ViewBag.Title - My Telerik MVC Application</title>
 
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My Telerik MVC Application</p>
-                </div>
-            </div>
-        </footer>
-    </body>
+    <script src="@Url.Content("~/Scripts/vendor/jquery/dist/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/bootstrap/dist/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/fastclick/lib/fastclick.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/nprogress/nprogress.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/Chart.js/dist/Chart.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/bernii/gauge.js/dist/gauge.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/iCheck/icheck.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/Flot/jquery.flot.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/Flot/jquery.flot.pie.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/Flot/jquery.flot.time.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/Flot/jquery.flot.stack.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/Flot/jquery.flot.resize.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/vendor/flot/jquery.flot.orderBars.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/flot/date.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/flot/jquery.flot.spline.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/flot/curvedLines.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/maps/jquery-jvectormap-2.0.3.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/moment/moment.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/datepicker/daterangepicker.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/vendor/maps/jquery-jvectormap-world-mill-en.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/maps/jquery-jvectormap-us-aea-en.js")"></script>
+    <script src="@Url.Content("~/Scripts/vendor/maps/gdp-data.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/vendor/custom.js")"></script>
+
+
+
+
+    
+    <link href="@Url.Content("~/Content/vendor/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/vendor/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/vendor/iCheck/skins/flat/green.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/vendor/maps/jquery-jvectormap-2.0.3.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/vendor/custom.min.css")" rel="stylesheet" type="text/css" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     
+    <link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.materialblack.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.1.18/kendo.dataviz.materialblack.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2016.1.18/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.1.18/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.1.18/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.1.18/kendo.aspnetmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script> 
+</head>
+<body class="nav-md">
+    @RenderBody()
+
+    <footer>
+        <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+</body>
+ 
+
 </html>
