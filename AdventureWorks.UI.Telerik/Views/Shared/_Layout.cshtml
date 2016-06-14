@@ -4,7 +4,7 @@
     <title>@ViewBag.Title - My Telerik MVC Application</title>
 </head>
 <body class="nav-md">
-    @if (!Request.IsAuthenticated)
+    @if (Request.IsAuthenticated)
     {
 
         <div class="container body">
