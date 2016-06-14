@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace AdventureWorks.UI.Telerik.Controllers
+﻿namespace AdventureWorks.UI.Telerik.Controllers
 {
+    using System.Web.Mvc;
+    using Authorize;
+
+    [CustomAuthorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

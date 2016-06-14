@@ -122,6 +122,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Authorize\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -468,6 +470,10 @@
     <Content Include="Content\kendo\2016.1.18\Uniform\sprite_2x.png" />
     <Content Include="Content\kendo\2016.1.18\Uniform\sprite_kpi.png" />
     <Content Include="Content\kendo\2016.1.18\Uniform\sprite_kpi_2x.png" />
+    <Content Include="Content\vendor\bootstrap-material-design\css\bootstrap-material-design.css" />
+    <Content Include="Content\vendor\bootstrap-material-design\css\bootstrap-material-design.min.css" />
+    <Content Include="Content\vendor\bootstrap-material-design\css\ripples.css" />
+    <Content Include="Content\vendor\bootstrap-material-design\css\ripples.min.css" />
     <Content Include="Content\vendor\bootstrap-progressbar\bootstrap-progressbar.js" />
     <Content Include="Content\vendor\bootstrap-progressbar\bootstrap-progressbar.min.js" />
     <Content Include="Content\vendor\bootstrap-progressbar\css\bootstrap-progressbar-2.0.0.css" />
@@ -886,6 +892,10 @@
     <Content Include="Content\vendor\iCheck\.bower.json" />
     <Content Include="Content\vendor\iCheck\bower.json" />
     <Content Include="Content\vendor\iCheck\icheck.jquery.json" />
+    <Content Include="Content\vendor\bootstrap-material-design\css\bootstrap-material-design.css.map" />
+    <Content Include="Content\vendor\bootstrap-material-design\css\bootstrap-material-design.min.css.map" />
+    <Content Include="Content\vendor\bootstrap-material-design\css\ripples.css.map" />
+    <Content Include="Content\vendor\bootstrap-material-design\css\ripples.min.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1053,6 +1063,10 @@
     <Content Include="Scripts\vendor\bernii\gauge.js\dist\gauge.min.js" />
     <Content Include="Scripts\vendor\bernii\gauge.js\favicon.ico" />
     <Content Include="Scripts\vendor\bernii\gauge.js\index.html" />
+    <Content Include="Scripts\vendor\bootstrap-material-design\js\material.js" />
+    <Content Include="Scripts\vendor\bootstrap-material-design\js\material.min.js" />
+    <Content Include="Scripts\vendor\bootstrap-material-design\js\ripples.js" />
+    <Content Include="Scripts\vendor\bootstrap-material-design\js\ripples.min.js" />
     <Content Include="Scripts\vendor\bootstrap-progressbar\bootstrap-progressbar.js" />
     <Content Include="Scripts\vendor\bootstrap-progressbar\bootstrap-progressbar.min.js" />
     <Content Include="Scripts\vendor\bootstrap-progressbar\css\bootstrap-progressbar-2.0.0.css" />
@@ -1850,6 +1864,10 @@
     <Content Include="Scripts\vendor\iCheck\.bower.json" />
     <Content Include="Scripts\vendor\iCheck\bower.json" />
     <Content Include="Scripts\vendor\iCheck\icheck.jquery.json" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Logout.cshtml" />
+    <Content Include="Scripts\vendor\bootstrap-material-design\js\material.min.js.map" />
+    <Content Include="Scripts\vendor\bootstrap-material-design\js\ripples.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
