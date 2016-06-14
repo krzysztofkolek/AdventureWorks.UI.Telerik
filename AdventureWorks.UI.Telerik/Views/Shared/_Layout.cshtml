@@ -2,8 +2,6 @@
 <html>
 <head>
     <title>@ViewBag.Title - My Telerik MVC Application</title>
-
-
 </head>
 <body class="nav-md">
     <div class="container body">
@@ -255,7 +253,9 @@
             </div>
             <!-- /top navigation -->
             <!-- page content -->
-            @RenderBody()
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
 
             <footer>
                 <div class="pull-right">
