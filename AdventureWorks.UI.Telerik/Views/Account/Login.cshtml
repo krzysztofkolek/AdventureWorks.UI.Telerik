@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="well bs-component">
-                    <form class="form-horizontal center-block">
+                    <form class="form-horizontal center-block" id="form">
                         <fieldset>
                             <div class="form-group is-empty">
                                 <label for="inputEmail" class="col-md-2 control-label">Email</label>
@@ -44,9 +44,38 @@
             </div>
         </div>
     </div>
-
-    
 </div>
+
+<script type="text/javascript"> 
+        $("#form").submit(function (e) {
+
+            e.preventDefault();
+            $.post("", {
+                "login": $("#inputEmail").val(),
+                "password": CryptoJS.MD5($("#inputPassword").val()).toString(),
+                "createPersistentCookie": true
+            }
+            );
+
+        });
+        //$('form').on('submit', function (e) {
+        //    // validation code here
+             
+                 
+
+        //    $.post("~/Account/Login", {
+        //            "login": inputEmail.value,
+        //            "password": CryptoJS.MD5(inputPassword).toString(),
+        //            "createPersistentCookie": false
+        //        }, function(data, status) {
+        //            window.location.href = window.location.href.replace('~/Account/Login', '');
+        //        });
+             
+        //});
+     
+</script>
+
+
 <style>
     body > div > div > div > div > div:nth-child(2) > div {
         margin-left: 25%;

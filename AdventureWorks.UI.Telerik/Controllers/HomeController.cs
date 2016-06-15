@@ -1,10 +1,9 @@
 ﻿namespace AdventureWorks.UI.Telerik.Controllers
 {
     using System.Web.Mvc;
-    using Authorize;
     using Base.Controller;
 
-    [CustomAuthorize]
+
     public class HomeController : BaseController
     {
         public ActionResult Index()

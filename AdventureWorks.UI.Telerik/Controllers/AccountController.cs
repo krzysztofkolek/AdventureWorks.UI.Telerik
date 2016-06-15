@@ -12,42 +12,54 @@
 
     public class AccountController : Controller
     {
+        [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult> Login()
         {
-            var userName = "gustavo0@adventure-works.com";
-            var password = "7e6faf12d9172c49eec309e0b717fc26";
+            return View();
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> Login(string login, string password, bool createPersistentCookie)
+        {
+            //var userName = "gustavo0@adventure-works.com";
+            //var password = "7e6faf12d9172c49eec309e0b717fc26";
+            //var createPersistentCookie = true;
             var token = "";
-            var createPersistentCookie = true;
 
-
-            token = BaseRestClient<GetUserInformationModel>.Authorizatize("http://localhost:5117/auth", userName, password).Token;
-
-            if (!token.IsNullOrWhiteSpace())
+            var restResult = BaseRestClient<GetUserInformationModel>.Authorizatize("http://localhost:5117/auth", login, password);
+            if (restResult != null)
             {
-                FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, //version
-                    userName, // user name
-                    DateTime.Now, //creation
-                    DateTime.Now.AddMinutes(30), //Expiration (you can set it to 1 month
-                    true, //Persistent
-                    null); // additional informations
-                var encryptedCookie = FormsAuthentication.Encrypt(authTicket);
-                var authCookie = new HttpCookie("AdventureWorksUser", encryptedCookie);
-                if (createPersistentCookie)
+                token = restResult.Token;
+
+                if (!token.IsNullOrWhiteSpace())
                 {
-                    authCookie.Expires = authTicket.Expiration;
+                    FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, //version
+                        login, // user name
+                        DateTime.Now, //creation
+                        DateTime.Now.AddMinutes(30), //Expiration (you can set it to 1 month
+                        true, //Persistent
+                        null); // additional informations
+                    var encryptedCookie = FormsAuthentication.Encrypt(authTicket);
+                    var authCookie = new HttpCookie("AdventureWorksUser", encryptedCookie);
+                    if (createPersistentCookie)
+                    {
+                        authCookie.Expires = authTicket.Expiration;
+                    }
+                    authCookie.HttpOnly = true;
+                    authCookie.Path = FormsAuthentication.FormsCookiePath;
+                    authCookie["UserName"] = login;
+                    authCookie["Token"] = token;
+
+                    HttpContext.Response.Cookies.Remove("AdventureWorksUser");
+                    HttpContext.Response.SetCookie(authCookie);
+
+                    FormsAuthentication.SetAuthCookie(login, createPersistentCookie);
+
+                    return RedirectToAction("Index", "Home");
                 }
-                authCookie.HttpOnly = true;
-                authCookie.Path = FormsAuthentication.FormsCookiePath;
-                authCookie["UserName"] = userName;
-                authCookie["Token"] = token;
-
-                HttpContext.Response.Cookies.Remove("AdventureWorksUser");
-                HttpContext.Response.SetCookie(authCookie);
-
-                FormsAuthentication.SetAuthCookie(userName, createPersistentCookie);
-
-                return RedirectToAction("Index", "Home");
             }
             return View();
         }
