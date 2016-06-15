@@ -2,9 +2,10 @@
 {
     using System.Web.Mvc;
     using Authorize;
+    using Base.Controller;
 
     [CustomAuthorize]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
