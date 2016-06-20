@@ -31,6 +31,57 @@
         <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
     </div>
 </div>
+
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dashboard_graph">
+            <div class="row x_title">
+                <div class="col-md-6">
+                    <h3>Salary <small>In last year</small></h3>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-10 col-xs-10">
+                <div class="demo-section k-content wide">
+                    @(Html.Kendo().Chart()
+                      .Name("chart")
+                      .Title("Site Visitors Stats \n /thousands/")
+                      .Legend(legend => legend
+                          .Visible(false)
+                      )
+                      .ChartArea(chartArea => chartArea
+                          .Background("transparent")
+                      )
+                      .Series(series =>
+                      {
+                          series.Bar(new double[] { 56000, 56000, 56000, 56000, 56000, 56000 }).Name("Total Visits");
+                          series.Bar(new double[] { 52000, 34000, 23000, 48000, 67000, 83000 }).Name("Unique visitors");
+                      })
+                      .CategoryAxis(axis => axis
+                          .Categories("Jan", "Feb", "Mar", "Apr", "May", "Jun")
+                          .MajorGridLines(lines => lines.Visible(false))
+                      )
+                      .ValueAxis(axis => axis
+                          .Numeric()
+                          .Max(140000)
+                          .Line(line => line.Visible(false))
+                          .MajorGridLines(lines => lines.Visible(true))
+                      )
+                      .Tooltip(tooltip => tooltip
+                          .Visible(true)
+                          .Template("#= series.name #: #= value #")
+                      )
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+
 <!-- /top tiles -->
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
