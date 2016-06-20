@@ -42,6 +42,9 @@
     <Reference Include="AdventureWorks.API.Model">
       <HintPath>..\..\AdventureWorksAPI\AdventureWorks.API.Model\bin\Debug\AdventureWorks.API.Model.dll</HintPath>
     </Reference>
+    <Reference Include="AdventureWorks.API.Route">
+      <HintPath>..\..\AdventureWorksAPI\AdventureWorks.API.Route\bin\Debug\AdventureWorks.API.Route.dll</HintPath>
+    </Reference>
     <Reference Include="AdventureWorks.RestClient">
       <HintPath>..\..\AdventureWorksAPI\AdventureWorks.RestClient\bin\Debug\AdventureWorks.RestClient.dll</HintPath>
     </Reference>
@@ -94,8 +97,9 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Web.Common">
-      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Web.Mvc">
       <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
@@ -174,17 +178,35 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Authorize\CustomAuthorizeAttribute.cs" />
     <Compile Include="Base\AuthModel\ApplicationUser.cs" />
     <Compile Include="Base\Controller\BaseController.cs" />
+    <Compile Include="Service\Base\BaseService.cs" />
+    <Compile Include="Service\Base\RestData.cs" />
+    <Compile Include="Service\Person\RestCall\GetUserInformation.cs" />
+    <Compile Include="Configuration\BaseConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\NancyServerConfiguration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ControllerViewModel\Home\IndexBaseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\dbo\Base\BaseDboService.cs" />
+    <Compile Include="Service\HumanResources\Base\BaseHumanResourcesService.cs" />
+    <Compile Include="Service\Person\Base\BasePersonService.cs" />
+    <Compile Include="Service\Person\RestCall\GetUserTitle.cs" />
+    <Compile Include="Service\Production\Base\BaseProductionService.cs" />
+    <Compile Include="Service\Purchasing\Base\BasePurchasingService.cs" />
+    <Compile Include="Service\Report\Base\BaseReportService.cs" />
+    <Compile Include="Service\Sales\Base\BaseSalesService.cs" />
+    <Compile Include="Service\Sales\RestCall\GetAllProductsSold.cs" />
+    <Compile Include="Service\Sales\RestCall\GetAllTerritorysFor.cs" />
+    <Compile Include="Service\Sales\RestCall\GetProductsSoldByPerson.cs" />
     <Compile Include="Startup.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -707,6 +729,7 @@
     <Content Include="Content\vendor\maps\jquery-jvectormap-2.0.3.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\AdventureWorksLogo.png" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -3772,7 +3795,9 @@
     <Content Include="Scripts\vendor\skycons\index.html" />
     <Content Include="Scripts\vendor\skycons\skycons.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -5443,6 +5468,8 @@
     <Content Include="Scripts\vendor\npm\test\fixtures\gitignore.tgz" />
     <Content Include="Scripts\vendor\npm\test\fixtures\npmignore.tgz" />
     <Content Include="Scripts\vendor\npm\test\fixtures\scoped-underscore-1.3.1.tgz" />
+    <Content Include="Views\Home\UserName.cshtml" />
+    <Content Include="Views\Home\UserTitle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
@@ -5453,7 +5480,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Base\GetData\" />
+    <Folder Include="Service\dbo\BaseExtension\" />
+    <Folder Include="Service\dbo\RestCall\" />
+    <Folder Include="Service\HumanResources\BaseExtension\" />
+    <Folder Include="Service\HumanResources\RestCall\" />
+    <Folder Include="Service\Person\BaseExtension\" />
+    <Folder Include="Service\Production\BaseExtension\" />
+    <Folder Include="Service\Production\RestCall\" />
+    <Folder Include="Service\Purchasing\BaseExtension\" />
+    <Folder Include="Service\Purchasing\RestCall\" />
+    <Folder Include="Service\Report\BaseExtension\" />
+    <Folder Include="Service\Report\RestCall\" />
+    <Folder Include="Service\Sales\BaseExtension\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

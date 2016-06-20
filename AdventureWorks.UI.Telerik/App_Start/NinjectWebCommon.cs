@@ -5,11 +5,14 @@ namespace AdventureWorks.UI.Telerik.App_Start
 {
     using System;
     using System.Web;
-
+    using API.Model.Module.User;
+    using Configuration;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
+    using Service.Base;
+    using Service.Person.RestCall;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +64,12 @@ namespace AdventureWorks.UI.Telerik.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            //kernel.Bind<BaseConfiguration>().To<BaseConfiguration>().InSingletonScope();
+            kernel.Bind<RestData<GetUserInformationModel>>().To<GetUserInformation>().InRequestScope();
+            //kernel.Bind<BaseConfiguration>().ToSelf().InSingletonScope();
+
+            kernel.Bind<GetUserTitle>().ToSelf();
+
         }        
     }
 }

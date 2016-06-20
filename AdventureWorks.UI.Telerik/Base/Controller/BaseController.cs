@@ -5,7 +5,7 @@
     using AuthModel;
     using Authorize;
 
-    [CustomAuthorize]
+
     public class BaseController : Controller
     {
         protected ApplicationUser User

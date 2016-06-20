@@ -1,16 +1,19 @@
 ﻿namespace AdventureWorks.UI.Telerik.Controllers
 {
     using System;
+    using System.Security.Principal;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Security;
+    using API.Model.Module.Auth;
     using API.Model.Module.User;
     using Authorize;
+    using Base.Controller;
     using Microsoft.Ajax.Utilities;
     using RestClient;
 
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         [HttpGet]
         [AllowAnonymous]
@@ -29,7 +32,7 @@
             //var createPersistentCookie = true;
             var token = "";
 
-            var restResult = BaseRestClient<GetUserInformationModel>.Authorizatize("http://localhost:5117/auth", login, password);
+            BaseAuthModel restResult = BaseRestClient<GetUserInformationModel>.Authorizatize("http://localhost:5117/auth", login, password);
             if (restResult != null)
             {
                 token = restResult.Token;
@@ -52,6 +55,7 @@
                     authCookie.Path = FormsAuthentication.FormsCookiePath;
                     authCookie["UserName"] = login;
                     authCookie["Token"] = token;
+                    authCookie["Claims"] = string.Join(",", restResult.Claims.ToArray());
 
                     HttpContext.Response.Cookies.Remove("AdventureWorksUser");
                     HttpContext.Response.SetCookie(authCookie);
@@ -64,11 +68,13 @@
             return View();
         }
 
+
         [CustomAuthorize]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return View();
+            HttpContext.User = new GenericPrincipal(new GenericIdentity(string.Empty), null);
+            return View("Login");
         }
     }
 }
