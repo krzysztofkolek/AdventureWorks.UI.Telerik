@@ -23,7 +23,12 @@
 
 
         protected abstract String GetConnectionUrl();
-        protected abstract ClientData GetClientData();
+
+        protected virtual ClientData GetClientData()
+        {
+            return new ClientData(Token);
+        }
+
         protected virtual Method GetWhatMethod()
         {
             return Method.GET;

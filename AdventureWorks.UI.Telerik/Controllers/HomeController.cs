@@ -42,32 +42,6 @@
             return View();
         }
 
-        [CustomAuthorize]
-        [OutputCache(Duration = 20, Location = OutputCacheLocation.Client)]
-        public async Task<ActionResult> UserName()
-        {
-            var userName = "";
-            var serviceResult = _getUserInformation.SetUrlAndCreateClientInstance(User.Token)
-                                              .Result();
-            if (serviceResult != null && serviceResult.EmployeeVM != null)
-            {
-                userName = String.Format("{0} {1}", serviceResult.ContactVM.FirstName, serviceResult.ContactVM.LastName);
-            }
-            return PartialView("UserName", userName);
-        }
-
-        [CustomAuthorize]
-        [OutputCache(Duration = 20, Location = OutputCacheLocation.Client)]
-        public async Task<ActionResult> Title()
-        {
-            var userTitle = "";
-            var serviceResult = _getUserTitle.SetUrlAndCreateClientInstance(User.Token)
-                                              .Result();
-            if (serviceResult != null && serviceResult.Title != null)
-            {
-                userTitle = String.Format("{0}", serviceResult.Title);
-            }
-            return PartialView("UserTitle", userTitle);
-        }
+        
     }
 }

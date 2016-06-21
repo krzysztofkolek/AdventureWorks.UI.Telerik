@@ -182,8 +182,19 @@
     <Compile Include="Authorize\CustomAuthorizeAttribute.cs" />
     <Compile Include="Base\AuthModel\ApplicationUser.cs" />
     <Compile Include="Base\Controller\BaseController.cs" />
+    <Compile Include="Controllers\HumanResourcesController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\ProductionController.cs" />
+    <Compile Include="Controllers\PurchasingController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Models\ControllerViewModel\HumanResources\GetEmployeesItemModel.cs" />
+    <Compile Include="Models\ControllerViewModel\HumanResources\GetEmployeesViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service\Base\BaseService.cs" />
     <Compile Include="Service\Base\RestData.cs" />
+    <Compile Include="Service\HumanResources\RestCall\GetEmployees.cs" />
     <Compile Include="Service\Person\RestCall\GetUserInformation.cs" />
     <Compile Include="Configuration\BaseConfiguration.cs">
       <SubType>Code</SubType>
@@ -5468,8 +5479,9 @@
     <Content Include="Scripts\vendor\npm\test\fixtures\gitignore.tgz" />
     <Content Include="Scripts\vendor\npm\test\fixtures\npmignore.tgz" />
     <Content Include="Scripts\vendor\npm\test\fixtures\scoped-underscore-1.3.1.tgz" />
-    <Content Include="Views\Home\UserName.cshtml" />
-    <Content Include="Views\Home\UserTitle.cshtml" />
+    <Content Include="Views\Shared\UserName.cshtml" />
+    <Content Include="Views\Shared\UserTitle.cshtml" />
+    <Content Include="Views\HumanResources\GetEmployees.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
@@ -5484,7 +5496,6 @@
     <Folder Include="Service\dbo\BaseExtension\" />
     <Folder Include="Service\dbo\RestCall\" />
     <Folder Include="Service\HumanResources\BaseExtension\" />
-    <Folder Include="Service\HumanResources\RestCall\" />
     <Folder Include="Service\Person\BaseExtension\" />
     <Folder Include="Service\Production\BaseExtension\" />
     <Folder Include="Service\Production\RestCall\" />
@@ -5493,6 +5504,11 @@
     <Folder Include="Service\Report\BaseExtension\" />
     <Folder Include="Service\Report\RestCall\" />
     <Folder Include="Service\Sales\BaseExtension\" />
+    <Folder Include="Views\Person\" />
+    <Folder Include="Views\Production\" />
+    <Folder Include="Views\Purchasing\" />
+    <Folder Include="Views\Reports\" />
+    <Folder Include="Views\Sales\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

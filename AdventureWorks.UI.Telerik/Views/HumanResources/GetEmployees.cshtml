@@ -1,0 +1,53 @@
+﻿@using AdventureWorks.UI.Telerik.Models.ControllerViewModel.HumanResources
+@{
+    ViewBag.Title = "GetEmployees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dashboard_graph">
+            <div class="row x_title">
+                <div class="col-md-6">
+                    <h3>Employees <small>In the company</small></h3>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="demo-section k-content wide">
+                    @(Html.Kendo().Grid<GetEmployeesItemModel>()
+                            .Name("EmployeeGrid")
+                            .Columns(columns =>
+                            {
+                                columns.Bound(p => p.Id).Visible(false).Groupable(false);
+                                columns.Bound(p => p.FullName);
+                                columns.Bound(p => p.HireDate);
+                                columns.Bound(p => p.Title);
+                                columns.Bound(p => p.Salary);
+                                columns.Bound(p => p.ManagerFullName);
+                                columns.Command(command =>
+                                {
+                                    command.Edit().Text("Edit");
+                                    command.Destroy().Text("Remove");
+                                }).Width(250);
+                            })
+                            .HtmlAttributes(new { style = "height: 800px;" })
+                            .Scrollable()
+                            .Groupable()
+                            .Sortable()
+                            .Pageable(pageable => pageable.Refresh(true)
+                                                          .PageSizes(true)
+                                                          .ButtonCount(5))
+                            .DataSource(dataSource => dataSource.Ajax()
+                                                                .Create(update => update.Action("GetEmployeesCreate", "HumanResources"))
+                                                                .Read(read => read.Action("GetEmployeesRead", "HumanResources"))
+                                                                .Update(update => update.Action("GetEmployeesUpdate", "HumanResources"))
+                                                                .Destroy(update => update.Action("GetEmployeesDestroy", "HumanResources"))
+                                                                .Model(model => model.Id(p => p.Id))
+                                                                .PageSize(10)
+                            )
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
