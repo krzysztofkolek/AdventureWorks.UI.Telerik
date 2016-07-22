@@ -1,5 +1,5 @@
 # AdventureWorks.UI.Telerik
-GUI layer for ***AdventureWorksAPI***.  It' s meets the following guidelines:
+GUI layer for ***AdventureWorksAPI***.  It meets the following guidelines:
 
  - Generic code/UI
  - Flexible UI
